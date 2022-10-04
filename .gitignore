@@ -28,6 +28,8 @@ coverage
 coverage.json
 typechain
 
+00-EX_V1.code-workspace
+
 #Hardhat files
 cache
 artifacts
