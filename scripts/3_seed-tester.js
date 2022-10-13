@@ -29,7 +29,7 @@ async function main() {
   // Give tokens to TESTER
    const sender = accounts[0]
   // Tester's metamask wallet address
-   const Tester = "0x9170b78B33A0dC78d1f62eeD46E1B224290D8156"
+   const Tester = "0x7145F2DD87cf598932442deBE49c41278d88C970"
 
   let amountMeth = tokens(10000)
   let amountMdai = tokens(777)

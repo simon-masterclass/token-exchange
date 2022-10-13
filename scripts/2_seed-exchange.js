@@ -73,6 +73,9 @@ async function main() {
   await transaction.wait()
   console.log(`User 0 Deposited ${amount} TOKEN from ${user0.address}\n`)
 
+  // Wait 2 second
+  await wait(2)
+
   // User 1 Approves mETH
   transaction = await mETH.connect(user1).approve(exchange.address, amount)
   await transaction.wait()
@@ -81,6 +84,9 @@ async function main() {
   transaction = await exchange.connect(user1).depositToken(mETH.address, amount)
   await transaction.wait()
   console.log(`User 1 Deposited ${amount} mETH from ${user1.address}\n`)
+
+  // Wait 2 second
+  await wait(2)
 
   // User 2 Approves mETH
   transaction = await mETH.connect(user2).approve(exchange.address, amount)
@@ -91,16 +97,25 @@ async function main() {
   await transaction.wait()
   console.log(`User 2 Deposited ${amount} mETH from ${user2.address}\n`)
 
+  // Wait 2 second
+  await wait(2)
+
 
   for (let i = 0; i < 3; i++) {
   // User i Approves mDAI
     transaction = await mDAI.connect(users[i]).approve(exchange.address, amount2)
     await transaction.wait()
     console.log(`User ${i} Approved ${amount2} mDAI from ${users[i].address}`)
-  // User i Deposits mDAI
+    // Wait 2 second
+    await wait(2)
+  
+    // User i Deposits mDAI
     transaction = await exchange.connect(users[i]).depositToken(mDAI.address, amount2)
     await transaction.wait()
     console.log(`User ${i} Deposited ${amount2} mDAI from ${users[i].address}\n`)
+
+    // Wait 2 second
+    await wait(2)
   }
 
   /////////////////////////////////////////////////////////////
@@ -113,14 +128,17 @@ async function main() {
   result = await transaction.wait()
   console.log(`Made order from ${user0.address}`)
 
+  // Wait 2 second
+  await wait(2)
+
   // User 0 cancels order
   orderId = result.events[0].args.id
   transaction = await exchange.connect(user0).cancelOrder(orderId)
   result = await transaction.wait()
   console.log(`Cancelled order from ${user0.address}\n`)
 
-  // Wait 1 second
-  await wait(1)
+  // Wait 2 second
+  await wait(2)
 
   /////////////////////////////////////////////////////////////
   // Seed Filled Orders
@@ -131,19 +149,25 @@ async function main() {
   result = await transaction.wait()
   console.log(`Made order from ${user0.address}`)
 
+  // Wait 2 second
+  await wait(2)
+
   // User 1 fills order
   orderId = result.events[0].args.id
   transaction = await exchange.connect(user1).fillOrder(orderId)
   result = await transaction.wait()
   console.log(`Filled order from ${user0.address}\n`)
 
-  // Wait 1 second
-  await wait(1)
+  // Wait 2 second
+  await wait(2)
 
   // User 0 makes another order
   transaction = await exchange.makeOrder(mETH.address, tokens(50), TOKEN.address, tokens(15))
   result = await transaction.wait()
   console.log(`Made order from ${user0.address}`)
+
+   // Wait 2 second
+   await wait(2)
 
   // User 0 fills another order
   orderId = result.events[0].args.id
@@ -151,8 +175,8 @@ async function main() {
   result = await transaction.wait()
   console.log(`Filled order from ${user0.address}\n`)
 
-  // Wait 1 second
-  await wait(1)
+  // Wait 2 seconds
+  await wait(2) 
 
   // User 0 makes FILL order
   transaction = await exchange.connect(user0).makeOrder(mETH.address, tokens(200), TOKEN.address, tokens(20))
@@ -165,10 +189,16 @@ async function main() {
   result = await transaction.wait()
   console.log(`Filled order from ${user0.address}\n`)
 
+  // Wait 2 seconds
+  await wait(2) 
+
   // User 0 makes FILL order
   transaction = await exchange.connect(user0).makeOrder(mETH.address, tokens(200), TOKEN.address, tokens(69))
   result = await transaction.wait()
   console.log(`Made order from ${user0.address}`)
+
+  // Wait 2 seconds
+  await wait(2) 
 
   // User 2 fills order
   orderId = result.events[0].args.id
@@ -176,8 +206,8 @@ async function main() {
   result = await transaction.wait()
   console.log(`USER 2 Filled order from ${user0.address}\n`)
 
-  // Wait 1 second
-  await wait(1)
+  // Wait 2 seconds
+  await wait(2) 
 
   /////////////////////////////////////////////////////////////
   // Seed Open Orders
@@ -190,8 +220,8 @@ async function main() {
 
     console.log(`Made order from ${user0.address}`)
 
-    // Wait 1 second
-    await wait(1)
+    // Wait 2 seconds
+    await wait(2) 
   }
 
   // User 1 makes 10 BUY orders mETH
@@ -201,8 +231,8 @@ async function main() {
 
     console.log(`Made order from ${user1.address}`)
 
-    // Wait 1 second
-    await wait(1)
+    // Wait 2 seconds
+    await wait(2) 
   }
 
   // User 2 makes 10 BUY orders for mDAI
@@ -212,8 +242,8 @@ async function main() {
 
     console.log(`Made order from ${user2.address}`)
 
-    // Wait 1 second
-    await wait(1)
+    // Wait 2 seconds
+    await wait(2) 
   }
 
   // User 1 makes 10 SELL orders for mDAI
@@ -223,8 +253,8 @@ async function main() {
 
     console.log(`Made order from ${user1.address}`)
 
-    // Wait 1 second
-    await wait(1)
+    // Wait 2 seconds
+    await wait(2) 
   }
 }
 
