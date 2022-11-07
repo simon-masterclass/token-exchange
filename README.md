@@ -1,6 +1,7 @@
 # Token Exchange [Demo App]
 
 This is a fully functional decentralized token exchange deployed to 2 test networks - Ethereum's Goerli test network and Polygon's Mumbai test-net.
+Check out the Live Demo App here: [https://token-exchange.on.fleek.co/](https://token-exchange.on.fleek.co/)
 
 To interact with this Decentralized application (Dapp), you will need a MetaMask wallet. 
 If you're interesed in giving this Dapp a test drive, you will need some test-net currency (for transaction fees), mETH ("mock ETHer") and mDAI ("mock DAI").
