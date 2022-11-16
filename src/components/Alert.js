@@ -15,7 +15,7 @@ const Alert = () => {
   const events = useSelector(myEventsSelector)
 
   const removeHandler = async (e) => {
-    alertRef.current.className = 'alert--remove'
+    alertRef.current.className = 'alert alert--remove'
   }
 
   useEffect(() => {
